@@ -409,7 +409,6 @@ function Home() {
       }
     } catch (error) {
     }
-
   };
   useEffect(() => {
     const timer = setInterval(() => {
