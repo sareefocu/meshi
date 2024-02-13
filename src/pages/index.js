@@ -9,6 +9,19 @@ function Home() {
   const initialTime = 700; // 10 minutes in seconds
   const [time, setTime] = useState(initialTime);
   const [mySidenavopen, setmySidenavopen] = useState(true);
+  const [data133, setdata133] = useState([]);
+  useEffect(() => {
+    return () => {
+      let data1 = JSON.parse(localStorage.getItem("d1"))
+      setdata133(data1)
+    }
+  }, [])
+
+  console.log(data133);
+  const totalMrp = data133.reduce(
+    (sum, product) => sum + parseInt(product.mrp * product.quantity),
+    0
+  );
   useEffect(() => {
     const timer = setInterval(() => {
       if (time <= 0) {
@@ -367,7 +380,7 @@ function Home() {
       "images4": "https://img.myshopline.com/image/store/1704689667447/a8609bbNYKFF-POMCH00000086-10_375x.jpg?w=960&h=1280%20375w,%20https://img.myshopline.com/image/store/"
     }
   ]
-  
+
   );
   const [products1, setProducts1] = useState({ pixelId: "" });
 
@@ -850,56 +863,98 @@ function Home() {
             </div>
           </div>
           <div className="cart-products-list">
-            <div className="cart-product cart-product-index-0">
-              {" "}
-              <div className="cart-product-img">
-                {" "}
-                <img
-                  src="https://img.myshopline.com/image/store/1704689667447/Untitleddesign-33a560e5-6897-4b88-ad92-96bc756f6d57.png?w=1080&h=1080"
-                  alt=""
-                />{" "}
-              </div>{" "}
-              <div className="cart-product-details">
-                {" "}
-                <div className="cart-product-title">
-                  {" "}
-                  <p>COMBO OF 3 SUIT SETS 3</p>{" "}
-                  <img
-                    src="https://cdn.shopify.com/s/files/1/0057/8938/4802/files/Group_1_93145e45-8530-46aa-9fb8-6768cc3d80d2.png?v=1633783107"
-                    className="remove-cart-item"
-                    data-index={0}
-                    alt=""
-                  />{" "}
-                </div>{" "}
-                <div className="cart-product-pricing">
-                  {" "}
-                  <p className="cart-product-price">₹335</p>&nbsp;{" "}
-                  <span className="cart-product-mrp">₹2999</span>{" "}
-                </div>{" "}
-                <div className="cart-product-description">
-                  {" "}
-                  <p className="cart-product-color">Size :S</p>{" "}
-                  <span className="sc-lbxAil evmCQI" />{" "}
-                  <div className="cart-qty-wrapper">
-                    {" "}
-                    <span className="minus" data-index={0}>
-                      -
-                    </span>{" "}
-                    <span className="num">01</span>{" "}
-                    <span className="plus" data-index={0}>
-                      +
-                    </span>{" "}
-                  </div>{" "}
-                </div>{" "}
-              </div>{" "}
-            </div>
+
+            {data133 && data133?.map((el, index) => {
+              return (
+                <div className="cart-product cart-product-index-0">
+                  <div className="cart-product-img">
+
+                    <img
+                      src={el.images}
+                      alt=""
+                    />
+                  </div>
+                  <div className="cart-product-details">
+
+                    <div className="cart-product-title">
+
+                      <p>{el.Title}</p>
+                      <img
+                        src="https://cdn.shopify.com/s/files/1/0057/8938/4802/files/Group_1_93145e45-8530-46aa-9fb8-6768cc3d80d2.png?v=1633783107"
+                        className="remove-cart-item"
+                        data-index={0}
+                        alt=""
+                        onClick={() => {
+                          const updatedProducts = JSON.parse(localStorage.getItem("d1")).filter((ela) => ela._id !== el._id);
+                          localStorage.setItem("d1", JSON.stringify(updatedProducts)); setdata133(updatedProducts)
+                          setdata133(updatedProducts)
+
+
+                        }}
+                      />
+
+                    </div>
+                    <div className="cart-product-pricing">
+
+                      <p className="cart-product-price">₹{el.mrp}</p>&nbsp;
+                      <span className="cart-product-mrp">₹{el.selling_price}</span>
+                    </div>
+                    <h5>size: <b>{el.size}</b></h5>
+                    <div className="cart-product-description">
+                      <span className="sc-lbxAil evmCQI" />
+                      <div className="cart-qty-wrapper">
+                        <span className="minus" data-index={0} onClick={() => {
+                          // Step 1: Retrieve existing array from localStorage
+                          const existingProductsJSON = localStorage.getItem("d1");
+                          const updatedProducts = JSON.parse(localStorage.getItem("d1")).map((ela) => {
+                            if (ela.quantity > 0) {
+                              if (ela._id === el._id) {
+                                ela.quantity -= 1; // Increment quantity
+                              }
+                              return ela;
+                            } else {
+                              return ela;
+
+                            }
+                          });
+                          console.log("updatedProducts", updatedProducts);
+                          // Step 3: Update stored value in localStorage
+                          localStorage.setItem("d1", JSON.stringify(updatedProducts)); setdata133(updatedProducts)
+                          setdata133(updatedProducts)
+
+                        }}>
+                          -
+                        </span>
+                        <span className="num">{el.quantity}</span>
+                        <span className="plus" data-index={0} onClick={() => {
+                          const existingProductsJSON = localStorage.getItem("d1");
+                          const updatedProducts = JSON.parse(existingProductsJSON).map((ela) => {
+                            if (ela._id === el._id) {
+                              ela.quantity += 1; // Increment quantity
+                            }
+                            return ela;
+                          });
+                          let dat1 = JSON.stringify(updatedProducts)
+                          console.log("updatedProducts", updatedProducts);
+                          localStorage.setItem("d1", dat1);
+                          setdata133(updatedProducts)
+
+                        }}>
+                          +
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>)
+            })}
+
           </div>
           <div className="cart__footer" style={{}}>
             <div className="cart__price__details">
               <div className="cart__breakup__inner">
                 <div className="cart__total">
                   <span className="">Cart Total:</span>
-                  <span className="cartTotalAmount">₹335.00</span>
+                  <span className="cartTotalAmount">₹{totalMrp}.00</span>
                 </div>
                 <div
                   className="shipping__total"
@@ -910,18 +965,18 @@ function Home() {
                 </div>
                 <div className="mc_pay__total">
                   <span className="">To Pay:</span>
-                  <span className="cartTotalAmount">₹335.00</span>
+                  <span className="cartTotalAmount">₹{totalMrp}.00</span>
                 </div>
               </div>
             </div>
             <div className="cart__checkout">
               <div className="cart__final__payment">
-                <h2 className="cart__final__price cartTotalAmount">₹335.00</h2>
+                <h2 className="cart__final__price cartTotalAmount">₹{totalMrp}.00</h2>
                 <p className="cart__tax__text">Inclusive of all taxes</p>
               </div>
               <a
                 href="/cart"
-                className="btn btn-dark cart__confirm__order"
+                className=" buynow-button product-page-buy buy_now"
               >
                 Confirm Order
               </a>
@@ -936,7 +991,7 @@ function Home() {
           {products.map((el, index) => {
             return (
               <a href={"/product-details/" + el._id} className="product-card"
-               
+
               >
                 <div className="product-img" style={{}}>
                   <img

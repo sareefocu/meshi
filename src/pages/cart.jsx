@@ -545,148 +545,146 @@ function cart() {
                 </div>
               </div>
             </div>
-            <div id="mySidenav" className="sidenav" style={{ right: "-100%" }}>
-              <div className="sidenav-div">
-                <div className="drawer__title">
-                  <img
-                    src="https://kurti.valentine-deal.shop/assets/website/images/M favicon.png"
-                    className="_31Y9yB logo-icon"
-                    style={{ width: "auto", height: 30 }}
-                  />
-                  <h3 className="ui2-heading">
-                    <span>
-                      <b>Your Cart</b>
-                    </span>
-                  </h3>
-                  <a
-                    href="javascript:void(0)"
-                    className="closebtn"
-                    onclick="closeNav()"
-                  >
-                    ×
-                  </a>
-                </div>
-              </div>
-              <div className="cart-products-list">
-                <div className="cart-product cart-product-index-0">
-                  {" "}
-                  <div className="cart-product-img">
-                    {" "}
-                    <img
-                      src="https://img.myshopline.com/image/store/1704689667447/Untitleddesign-33a560e5-6897-4b88-ad92-96bc756f6d57.png?w=1080&h=1080"
-                      alt=""
-                    />{" "}
-                  </div>{" "}
-                  <div className="cart-product-details">
-                    {" "}
-                    <div className="cart-product-title">
-                      {" "}
-                      <p>COMBO OF 3 SUIT SETS 3</p>{" "}
-                      <img
-                        src="https://cdn.shopify.com/s/files/1/0057/8938/4802/files/Group_1_93145e45-8530-46aa-9fb8-6768cc3d80d2.png?v=1633783107"
-                        className="remove-cart-item"
-                        data-index={0}
-                        alt=""
-                      />{" "}
-                    </div>{" "}
-                    <div className="cart-product-pricing">
-                      {" "}
-                      <p className="cart-product-price">₹335</p>&nbsp;{" "}
-                      <span className="cart-product-mrp">₹2999</span>{" "}
-                    </div>{" "}
-                    <div className="cart-product-description">
-                      {" "}
-                      <p className="cart-product-color">Size :S</p>{" "}
-                      <span className="sc-lbxAil evmCQI" />{" "}
-                      <div className="cart-qty-wrapper">
-                        {" "}
-                        <span className="minus" data-index={0}>
-                          -
-                        </span>{" "}
-                        <span className="num">01</span>{" "}
-                        <span className="plus" data-index={0}>
-                          +
-                        </span>{" "}
-                      </div>{" "}
-                    </div>{" "}
-                  </div>{" "}
-                </div>
-                <div className="cart-product cart-product-index-1">
-                  {" "}
-                  <div className="cart-product-img">
-                    {" "}
-                    <img
-                      src="https://img.myshopline.com/image/store/1704689667447/Untitleddesign-a84dd8a5-e871-49f4-ac09-2527b52bace4.png?w=1080&h=1080"
-                      alt=""
-                    />{" "}
-                  </div>{" "}
-                  <div className="cart-product-details">
-                    {" "}
-                    <div className="cart-product-title">
-                      {" "}
-                      <p>COMBO OF 3 SUIT SETS 1</p>{" "}
-                      <img
-                        src="https://cdn.shopify.com/s/files/1/0057/8938/4802/files/Group_1_93145e45-8530-46aa-9fb8-6768cc3d80d2.png?v=1633783107"
-                        className="remove-cart-item"
-                        data-index={1}
-                        alt=""
-                      />{" "}
-                    </div>{" "}
-                    <div className="cart-product-pricing">
-                      {" "}
-                      <p className="cart-product-price">₹299</p>&nbsp;{" "}
-                      <span className="cart-product-mrp">₹2999</span>{" "}
-                    </div>{" "}
-                    <div className="cart-product-description">
-                      {" "}
-                      <p className="cart-product-color">Size :S</p>{" "}
-                      <span className="sc-lbxAil evmCQI" />{" "}
-                      <div className="cart-qty-wrapper">
-                        {" "}
-                        <span className="minus" data-index={1}>
-                          -
-                        </span>{" "}
-                        <span className="num">01</span>{" "}
-                        <span className="plus" data-index={1}>
-                          +
-                        </span>{" "}
-                      </div>{" "}
-                    </div>{" "}
-                  </div>{" "}
-                </div>
-              </div>
-              <div className="cart__footer" style={{}}>
-                <div className="cart__price__details">
-                  <div className="cart__breakup__inner">
-                    <div className="cart__total">
-                      <span className="">Cart Total:</span>
-                      <span className="cartTotalAmount">₹634.00</span>
+            <div id="mySidenav" className="sidenav" style={{ right: !mySidenavopen ? "0%" : "-100%" }}>
+                <div className="sidenav-div">
+                    <div className="drawer__title">
+                        <img
+                            src="https://kurti.valentine-deal.shop/assets/website/images/M favicon.png"
+                            className="_31Y9yB logo-icon"
+                            style={{ width: "auto", height: 30 }}
+                        />
+                        <h3 className="ui2-heading">
+                            <span>
+                                <b>Your Cart</b>
+                            </span>
+                        </h3>
+                        <a className="closebtn" onClick={() => {
+                            setmySidenavopen(!mySidenavopen)
+                        }}>
+                            ×
+                        </a>
                     </div>
-                    <div
-                      className="shipping__total"
-                      style={{ borderBottom: "1px dashed #000" }}
-                    >
-                      <span className="">Shipping:</span>
-                      <span className="">FREE</span>
-                    </div>
-                    <div className="mc_pay__total">
-                      <span className="">To Pay:</span>
-                      <span className="cartTotalAmount">₹634.00</span>
-                    </div>
-                  </div>
                 </div>
-                <div className="cart__checkout">
-                  <div className="cart__final__payment">
-                    <h2 className="cart__final__price cartTotalAmount">
-                      ₹634.00
-                    </h2>
-                    <p className="cart__tax__text">Inclusive of all taxes</p>
-                  </div>
-                  <a href="/cart" className="btn btn-dark cart__confirm__order">
-                    Confirm Order
-                  </a>
+                <div className="cart-products-list">
+
+                    {data133 && data133?.map((el, index) => {
+                        return (
+                            <div className="cart-product cart-product-index-0">
+                                <div className="cart-product-img">
+
+                                    <img
+                                        src={el.images}
+                                        alt=""
+                                    />
+                                </div>
+                                <div className="cart-product-details">
+
+                                    <div className="cart-product-title">
+
+                                        <p>{el.Title}</p>
+                                        <img
+                                            src="https://cdn.shopify.com/s/files/1/0057/8938/4802/files/Group_1_93145e45-8530-46aa-9fb8-6768cc3d80d2.png?v=1633783107"
+                                            className="remove-cart-item"
+                                            data-index={0}
+                                            alt=""
+                                            onClick={() => {
+                                                const updatedProducts = JSON.parse(localStorage.getItem("d1")).filter((ela) => ela._id !== el._id);
+                                                localStorage.setItem("d1", JSON.stringify(updatedProducts)); setdata133(updatedProducts)
+                                                setdata133(updatedProducts)
+
+
+                                            }}
+                                        />
+
+                                    </div>
+                                    <div className="cart-product-pricing">
+
+                                        <p className="cart-product-price">₹{el.mrp}</p>&nbsp;
+                                        <span className="cart-product-mrp">₹{el.selling_price}</span>
+                                    </div>
+                                    <h5>size: <b>{el.size}</b></h5>
+                                    <div className="cart-product-description">
+                                        <span className="sc-lbxAil evmCQI" />
+                                        <div className="cart-qty-wrapper">
+                                            <span className="minus" data-index={0} onClick={() => {
+                                                // Step 1: Retrieve existing array from localStorage
+                                                const existingProductsJSON = localStorage.getItem("d1");
+                                                const updatedProducts = JSON.parse(localStorage.getItem("d1")).map((ela) => {
+                                                    if (ela.quantity > 0) {
+                                                        if (ela._id === el._id) {
+                                                            ela.quantity -= 1; // Increment quantity
+                                                        }
+                                                        return ela;
+                                                    } else {
+                                                        return ela;
+
+                                                    }
+                                                });
+                                                console.log("updatedProducts", updatedProducts);
+                                                // Step 3: Update stored value in localStorage
+                                                localStorage.setItem("d1", JSON.stringify(updatedProducts)); setdata133(updatedProducts)
+                                                setdata133(updatedProducts)
+
+                                            }}>
+                                                -
+                                            </span>
+                                            <span className="num">{el.quantity}</span>
+                                            <span className="plus" data-index={0} onClick={() => {
+                                                const existingProductsJSON = localStorage.getItem("d1");
+                                                const updatedProducts = JSON.parse(existingProductsJSON).map((ela) => {
+                                                    if (ela._id === el._id) {
+                                                        ela.quantity += 1; // Increment quantity
+                                                    }
+                                                    return ela;
+                                                });
+                                                let dat1 = JSON.stringify(updatedProducts)
+                                                console.log("updatedProducts", updatedProducts);
+                                                localStorage.setItem("d1", dat1);
+                                                setdata133(updatedProducts)
+
+                                            }}>
+                                                +
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>)
+                    })}
+
                 </div>
-              </div>
+                <div className="cart__footer" style={{}}>
+                    <div className="cart__price__details">
+                        <div className="cart__breakup__inner">
+                            <div className="cart__total">
+                                <span className="">Cart Total:</span>
+                                <span className="cartTotalAmount">₹{totalMrp}.00</span>
+                            </div>
+                            <div
+                                className="shipping__total"
+                                style={{ borderBottom: "1px dashed #000" }}
+                            >
+                                <span className="">Shipping:</span>
+                                <span className="">FREE</span>
+                            </div>
+                            <div className="mc_pay__total">
+                                <span className="">To Pay:</span>
+                                <span className="cartTotalAmount">₹{totalMrp}.00</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="cart__checkout">
+                        <div className="cart__final__payment">
+                            <h2 className="cart__final__price cartTotalAmount">₹{totalMrp}.00</h2>
+                            <p className="cart__tax__text">Inclusive of all taxes</p>
+                        </div>
+                        <a
+                            href="/cart"
+                            className=" buynow-button product-page-buy buy_now"
+                        >
+                            Confirm Order
+                        </a>
+                    </div>
+                </div>
             </div>
             <style
               dangerouslySetInnerHTML={{
