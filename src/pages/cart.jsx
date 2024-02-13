@@ -2,6 +2,7 @@ import React, { useEffect, useLayoutEffect, useState } from "react";
 
 function cart() {
   const [data133, setdata133] = useState([]);
+  const [mySidenavopen, setmySidenavopen] = useState(true);
   const initialTime = 900; // 10 minutes in seconds
   const [time, setTime] = useState(initialTime);
   useLayoutEffect(() => {
