@@ -890,8 +890,6 @@ function Productdetails() {
                                 <button
                                     className=" buynow-button product-page-buy buy_now"
                                     onClick={() => {
-                                        setmySidenavopen(!mySidenavopen);
-
                                         // Step 1: Retrieve existing array from localStorage
                                         const existingProductsJSON = localStorage.getItem("d1");
                                         const existingProducts = existingProductsJSON ? JSON.parse(existingProductsJSON) : [];
