@@ -33,8 +33,6 @@ function Productdetails() {
         return () => {
             clearInterval(timer);
             setloading(false)
-            let data1 = JSON.parse(localStorage.getItem("d1"))
-            setdata133(data1)
         };
     }, [time]);
     const router = useRouter();
@@ -51,7 +49,6 @@ function Productdetails() {
         console.log("itamsitamsitamsitams", a);
         setdata1(a[0])
     }, [router.query.id]);
-    console.log(data133);
     return (
         data1 && <>
             <title>Sale Sale Sale - Home</title>
@@ -954,7 +951,7 @@ function Productdetails() {
                                             alt=""
                                             onClick={() => {
                                                 const updatedProducts = JSON.parse(localStorage.getItem("d1")).filter((ela) => ela._id !== el._id);
-                                                localStorage.setItem("d1", JSON.stringify(updatedProducts));                                                            setdata133(updatedProducts)
+                                                localStorage.setItem("d1", JSON.stringify(updatedProducts)); setdata133(updatedProducts)
                                                 setdata133(updatedProducts)
 
 
@@ -985,7 +982,7 @@ function Productdetails() {
                                                 });
                                                 console.log("updatedProducts", updatedProducts);
                                                 // Step 3: Update stored value in localStorage
-                                                localStorage.setItem("d1", JSON.stringify(updatedProducts));                                                  setdata133(updatedProducts)
+                                                localStorage.setItem("d1", JSON.stringify(updatedProducts)); setdata133(updatedProducts)
                                                 setdata133(updatedProducts)
 
                                             }}>
@@ -993,17 +990,16 @@ function Productdetails() {
                                             </span>
                                             <span className="num">{el.quantity}</span>
                                             <span className="plus" data-index={0} onClick={() => {
-                                                // Step 1: Retrieve existing array from localStorage
                                                 const existingProductsJSON = localStorage.getItem("d1");
-                                                const updatedProducts = JSON.parse(localStorage.getItem("d1")).map((ela) => {
+                                                const updatedProducts = JSON.parse(existingProductsJSON).map((ela) => {
                                                     if (ela._id === el._id) {
                                                         ela.quantity += 1; // Increment quantity
                                                     }
                                                     return ela;
                                                 });
+                                                let dat1 = JSON.stringify(updatedProducts)
                                                 console.log("updatedProducts", updatedProducts);
-                                                // Step 3: Update stored value in localStorage
-                                                localStorage.setItem("d1", JSON.stringify(updatedProducts));                                        setdata133(existingProducts)
+                                                localStorage.setItem("d1", dat1);
                                                 setdata133(updatedProducts)
 
                                             }}>
