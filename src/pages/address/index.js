@@ -2,7 +2,7 @@
 import Layout from "@/componets/Layout";
 import { useFormik } from "formik";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 const Address = () => {
     const router = useRouter();
     const [products1, setProducts1] = useState({ pixelId: "" });
