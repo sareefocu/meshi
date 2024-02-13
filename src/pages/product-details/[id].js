@@ -10,7 +10,7 @@ function Productdetails() {
     const initialTime = 900; // 10 minutes in seconds
     const [time, setTime] = useState(initialTime);
     const [mySidenavopen, setmySidenavopen] = useState(true);
-    const [size, setsize] = useState(6);
+    const [size, setsize] = useState(1);
     const [loading, setloading] = useState(true);
     const [data133, setdata133] = useState([]);
     useEffect(() => {
@@ -608,8 +608,9 @@ function Productdetails() {
                                     </h6>
                                     <div className="sc-kImNAt hnbNOX SizeSelectionstyled__SizeSelectorChipsStyled-sc-155vsje-2 dEkkqK">
                                         <span
-                                            className="sc-eKJbhj dqLmGj dress-size active"
-                                            onclick="manage_size_click($(this))"
+                                            className={`sc-eKJbhj dqLmGj dress-size ${size === 1 && 'active'}`} onClick={() => {
+                                                setsize(1)
+                                            }}
                                         >
                                             <span
                                                 fontSize="15px"
@@ -621,8 +622,10 @@ function Productdetails() {
                                             </span>
                                         </span>
                                         <span
-                                            className="sc-eKJbhj dqLmGj dress-size"
-                                            onclick="manage_size_click($(this))"
+                                            className={`sc-eKJbhj dqLmGj dress-size ${size === 2 && 'active'}`}
+                                            onclick="manage_size_click($(this))" onClick={() => {
+                                                setsize(2)
+                                            }}
                                         >
                                             <span
                                                 fontSize="15px"
@@ -634,8 +637,10 @@ function Productdetails() {
                                             </span>
                                         </span>
                                         <span
-                                            className="sc-eKJbhj dqLmGj dress-size"
-                                            onclick="manage_size_click($(this))"
+                                            className={`sc-eKJbhj dqLmGj dress-size ${size === 3 && 'active'}`}
+                                            onclick="manage_size_click($(this))" onClick={() => {
+                                                setsize(3)
+                                            }}
                                         >
                                             <span
                                                 fontSize="15px"
@@ -647,8 +652,10 @@ function Productdetails() {
                                             </span>
                                         </span>
                                         <span
-                                            className="sc-eKJbhj dqLmGj dress-size"
-                                            onclick="manage_size_click($(this))"
+                                            className={`sc-eKJbhj dqLmGj dress-size ${size === 4 && 'active'}`}
+                                            onclick="manage_size_click($(this))" onClick={() => {
+                                                setsize(4)
+                                            }}
                                         >
                                             <span
                                                 fontSize="15px"
@@ -660,8 +667,10 @@ function Productdetails() {
                                             </span>
                                         </span>
                                         <span
-                                            className="sc-eKJbhj dqLmGj dress-size"
-                                            onclick="manage_size_click($(this))"
+                                            className={`sc-eKJbhj dqLmGj dress-size ${size === 5 && 'active'}`}
+                                            onclick="manage_size_click($(this))" onClick={() => {
+                                                setsize(5)
+                                            }}
                                         >
                                             <span
                                                 fontSize="15px"
@@ -819,7 +828,7 @@ function Productdetails() {
                                             existingProducts[existingProductIndex].quantity += 1;
                                         } else {
                                             // If the product doesn't exist, add it with quantity 1
-                                            const newProduct = { ...data1, quantity: 1 };
+                                            const newProduct = { ...data1, quantity: 1, size: size === 1 ? 's' : size === 2 ? "m" : size === 3 ? "l" : size === 4 ? 'xl' : "2xl" };
                                             existingProducts.push(newProduct);
                                         }
 
@@ -902,7 +911,7 @@ function Productdetails() {
                                             existingProducts[existingProductIndex].quantity += 1;
                                         } else {
                                             // If the product doesn't exist, add it with quantity 1
-                                            const newProduct = { ...data1, quantity: 1 };
+                                            const newProduct = { ...data1, quantity: 1, size: size === 1 ? 's' : size === 2 ? "m" : size === 3 ? "l" : size === 4 ? 'xl' : "2xl" };
                                             existingProducts.push(newProduct);
                                         }
 
@@ -992,12 +1001,14 @@ function Productdetails() {
 
                                             }}
                                         />
+
                                     </div>
                                     <div className="cart-product-pricing">
 
                                         <p className="cart-product-price">₹{el.mrp}</p>&nbsp;
                                         <span className="cart-product-mrp">₹{el.selling_price}</span>
                                     </div>
+                                    <h5>size: <b>{el.size}</b></h5>
                                     <div className="cart-product-description">
                                         <span className="sc-lbxAil evmCQI" />
                                         <div className="cart-qty-wrapper">
@@ -1074,7 +1085,7 @@ function Productdetails() {
                         </div>
                         <a
                             href="/cart"
-                            className="btn btn-dark cart__confirm__order"
+                            className=" buynow-button product-page-buy buy_now"
                         >
                             Confirm Order
                         </a>

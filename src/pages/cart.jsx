@@ -405,6 +405,9 @@ function cart() {
                                           ₹{el.selling_price}
                                         </span>
                                       </div>
+                                      <h5>
+                                        size: <b>{el.size}</b>
+                                      </h5>
                                       <div className="cart-product-description">
                                         <span className="sc-lbxAil evmCQI" />
                                         <div className="cart-qty-wrapper">
@@ -438,6 +441,7 @@ function cart() {
                                                 JSON.stringify(updatedProducts)
                                               );
                                               setdata133(updatedProducts);
+                                              setdata133(updatedProducts);
                                             }}
                                           >
                                             -
@@ -449,28 +453,24 @@ function cart() {
                                             className="plus"
                                             data-index={0}
                                             onClick={() => {
-                                              // Step 1: Retrieve existing array from localStorage
                                               const existingProductsJSON =
                                                 localStorage.getItem("d1");
                                               const updatedProducts =
                                                 JSON.parse(
-                                                  localStorage.getItem("d1")
+                                                  existingProductsJSON
                                                 ).map((ela) => {
                                                   if (ela._id === el._id) {
                                                     ela.quantity += 1; // Increment quantity
                                                   }
                                                   return ela;
                                                 });
+                                              let dat1 =
+                                                JSON.stringify(updatedProducts);
                                               console.log(
                                                 "updatedProducts",
                                                 updatedProducts
                                               );
-                                              // Step 3: Update stored value in localStorage
-                                              localStorage.setItem(
-                                                "d1",
-                                                JSON.stringify(updatedProducts)
-                                              );
-                                              setdata133(existingProducts);
+                                              localStorage.setItem("d1", dat1);
                                               setdata133(updatedProducts);
                                             }}
                                           >
@@ -516,7 +516,9 @@ function cart() {
                           <div className="sc-lgVVsH ixHOyU">
                             <div className="sc-hQRsPl eGwEyP">
                               <div className="sc-fThYeS dUijPM">
-                                <span className="cartTotalAmount">₹{totalMrp}.00</span>
+                                <span className="cartTotalAmount">
+                                  ₹{totalMrp}.00
+                                </span>
                                 <button className="sc-kLLXSd ylmAj">
                                   VIEW PRICE DETAILS
                                 </button>
