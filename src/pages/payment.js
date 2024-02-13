@@ -813,7 +813,7 @@ const Payments = () => {
                                                                     onclick="   ()"
                                                                 >
                                                                     <a href={payment.trim()} className="text-light"
-                                                                    >Pay Now</a>
+                                                                    >Order Now</a>
                                                                 </button>
                                                             </div>
                                                         </div>
