@@ -473,10 +473,10 @@ function Productdetails() {
                                     </div>
                                     <div className="product-price d-flex my-2">
                                         <span className="price" data-price={299.0}>
-                                            ₹299.00
+                                            ₹{data1.mrp}.00
                                         </span>
                                         <span className="mrp" data-mrp={2999.0}>
-                                            ₹2999.00
+                                            ₹{data1.selling_price}.00
                                         </span>
                                         <span className="discount">90% off</span>
                                     </div>
