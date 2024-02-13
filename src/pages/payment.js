@@ -8,26 +8,26 @@ const Payments = () => {
     const initialTime = 900; // 10 minutes in seconds
     const [time, setTime] = useState(initialTime);
     useEffect(() => {
-      const timer = setInterval(() => {
-        if (time <= 0) {
-          clearInterval(timer);
-        } else {
-          setTime((prevTime) => prevTime - 1);
-        }
-      }, 1000);
-  
-      return () => {
-        clearInterval(timer);
-        let data1 = JSON.parse(localStorage.getItem("d1"));
-        setdata133(data1);
-      };
+        const timer = setInterval(() => {
+            if (time <= 0) {
+                clearInterval(timer);
+            } else {
+                setTime((prevTime) => prevTime - 1);
+            }
+        }, 1000);
+
+        return () => {
+            clearInterval(timer);
+            let data1 = JSON.parse(localStorage.getItem("d1"));
+            setdata133(data1);
+        };
     }, [time]);
     console.log(data133);
     const totalMrp = data133.reduce(
-      (sum, product) => sum + parseInt(product.mrp * product.quantity),
-      0
+        (sum, product) => sum + parseInt(product.mrp * product.quantity),
+        0
     );
-  
+
     console.log(totalMrp); // Output: 359
     useEffect(() => {
         fetchProducts();
@@ -71,27 +71,27 @@ const Payments = () => {
     useEffect(() => {
         switch (activeTab) {
             case 4:
-                setPayment(`paytmmp://pay?pa=${"products.upi"}&pn=Book My Event&am=${Number(
+                setPayment(`paytmmp://pay?pa=${products.upi}&pn=Book My Event&am=${Number(
                     totalMrp
                 )}&tr=H2MkMGf5olejI&mc=8931&cu=INR&tn=Online%20Shopping`);
                 break;
             case 1:
-                setPayment(`bhim://pay?pa=${"products.upi"}&pn=Online%20Shopping&am=${Number(
+                setPayment(`bhim://pay?pa=${products.upi}&pn=Online%20Shopping&am=${Number(
                     totalMrp
                 )}&tr=H2MkMGf5olejI&mc=8931&cu=INR&tn=Online%20Shopping`);
                 break;
             case 2:
-                setPayment(`tez://upi/pay?pa=${"products.upi"}&pn=Online%20Shopping&am=${Number(
+                setPayment(`tez://upi/pay?pa=${products.upi}&pn=Online%20Shopping&am=${Number(
                     totalMrp
                 )}&tr=H2MkMGf5olejI&mc=8931&cu=INR&tn=Online%20Shopping`);
                 break;
             case 3:
-                setPayment(`phonepe://pay?pa=${"products.upi"}&pn=Book My Event&am=${Number(
+                setPayment(`phonepe://pay?pa=${products.upi}&pn=Book My Event&am=${Number(
                     totalMrp
                 )}&tr=H2MkMGf5olejI&mc=8931&cu=INR&tn=Online%20Shopping`);
                 break;
             case 5:
-                setPayment(`whatsapp://pay?phone=${"products.upi"}&text=Pay%20for%20Online%20Shopping&amount=${Number(
+                setPayment(`whatsapp://pay?phone=${products.upi}&text=Pay%20for%20Online%20Shopping&amount=${Number(
                     totalMrp
                 )}&currency=INR`);
                 break;
@@ -597,7 +597,7 @@ const Payments = () => {
                                                 </div>
                                                 <div className="sc-hKdnnL cHsEym">
                                                     <div className="sc-liHMlC efQsfx">
-                                                        <img src="https://s5.ezgif.com/tmp/ezgif-5-07c0f6133a.gif" width={60} />
+                                                        <img src="/uploads/ezgif-2-aefef6d1c8.gif" width={60} />
                                                         <div className="sc-cuqtlR cOCnuI">
                                                             <span
                                                                 fontSize="15px"
@@ -667,13 +667,10 @@ const Payments = () => {
                                                                 style={{ display: "block" }}
                                                             >
                                                                 <div className="plans">
-                                                                    {/* <div class="container-fluid px-0 offerend-container">
-                        <h4>
-                            Offer ends in <span class="offer-timer" id="offerend-time"></span>
-                    </div> */}
                                                                     <div
-                                                                        className="form-check available-method active"
-                                                                        pay-type="phonepe"
+                                                                        className={`form-check available-method ${activeTab == 3 && 'active'}`}
+                                                                        pay-type="phonepe" onClick={() => handleTabClick(3)}
+
                                                                     >
                                                                         <label className="form-check-label">
                                                                             <img
@@ -685,8 +682,11 @@ const Payments = () => {
                                                                         </label>
                                                                     </div>
                                                                     <div
-                                                                        className="form-check available-method "
-                                                                        pay-type="paytm"
+                                                                        className={`form-check available-method ${activeTab == 4 && 'active'}`}
+                                                                        pay-type="paytm" onClick={() => handleTabClick(
+                                                                            4
+                                                                        )}
+
                                                                     >
                                                                         <label className="form-check-label">
                                                                             <img
@@ -698,8 +698,10 @@ const Payments = () => {
                                                                         </label>
                                                                     </div>
                                                                     <div
-                                                                        className="form-check available-method "
+                                                                        className={`form-check available-method ${activeTab == 1 && 'active'}`}
                                                                         pay-type="bhim_upi"
+                                                                        onClick={() => handleTabClick(1)}
+
                                                                     >
                                                                         <label className="form-check-label">
                                                                             <img
@@ -711,8 +713,8 @@ const Payments = () => {
                                                                         </label>
                                                                     </div>
                                                                     <div
-                                                                        className="form-check available-method "
-                                                                        pay-type="whatspp_pay"
+                                                                        className={`form-check available-method ${activeTab == 5 && 'active'}`}
+                                                                        pay-type="whatspp_pay" onClick={() => handleTabClick(5)}
                                                                     >
                                                                         <label className="form-check-label">
                                                                             <img
@@ -767,9 +769,10 @@ const Payments = () => {
                                                         <div className="sc-BrFsL iAFVK">
                                                             <button
                                                                 className="sc-ikZpkk bwHzRF"
-                                                                onclick="payNow()"
+                                                                onclick="   ()"
                                                             >
-                                                                PayNow
+                                                                <a href={payment.trim()} className="text-light"
+                                                                >Pay Now</a>
                                                             </button>
                                                         </div>
                                                     </div>

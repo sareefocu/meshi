@@ -49,6 +49,11 @@ function Productdetails() {
         console.log("itamsitamsitamsitams", a);
         setdata1(a[0])
     }, [router.query.id]);
+
+    const totalMrp = data133.reduce(
+        (sum, product) => sum + parseInt(product.mrp * product.quantity),
+        0
+    );
     return (
         data1 && <>
             <title>Sale Sale Sale - Home</title>
@@ -800,17 +805,29 @@ function Productdetails() {
                                 <button
                                     className="buynow-button buynow-button-white product-page-buy add_cart"
                                     onClick={() => {
-                                        setmySidenavopen(!mySidenavopen)
+                                        setmySidenavopen(!mySidenavopen);
+
                                         // Step 1: Retrieve existing array from localStorage
                                         const existingProductsJSON = localStorage.getItem("d1");
-                                        const existingProducts = data133
+                                        const existingProducts = existingProductsJSON ? JSON.parse(existingProductsJSON) : [];
 
-                                        const newProduct = { ...data1, quantity: 1 };
-                                        existingProducts.push(newProduct);
+                                        // Step 2: Check if the product with the same name already exists
+                                        const existingProductIndex = existingProducts.findIndex(product => product.Title === data1.Title);
 
+                                        if (existingProductIndex !== -1) {
+                                            // If the product exists, update its quantity
+                                            existingProducts[existingProductIndex].quantity += 1;
+                                        } else {
+                                            // If the product doesn't exist, add it with quantity 1
+                                            const newProduct = { ...data1, quantity: 1 };
+                                            existingProducts.push(newProduct);
+                                        }
+
+                                        // Step 3: Update stored value in localStorage
                                         localStorage.setItem("d1", JSON.stringify(existingProducts));
-                                        setdata133(existingProducts)
+                                        setdata133(existingProducts);
                                     }}
+
                                 >
                                     <svg
                                         width={21}
@@ -873,8 +890,28 @@ function Productdetails() {
                                 <button
                                     className=" buynow-button product-page-buy buy_now"
                                     onClick={() => {
-                                        router.push("/cart");
+                                        setmySidenavopen(!mySidenavopen);
 
+                                        // Step 1: Retrieve existing array from localStorage
+                                        const existingProductsJSON = localStorage.getItem("d1");
+                                        const existingProducts = existingProductsJSON ? JSON.parse(existingProductsJSON) : [];
+
+                                        // Step 2: Check if the product with the same name already exists
+                                        const existingProductIndex = existingProducts.findIndex(product => product.Title === data1.Title);
+
+                                        if (existingProductIndex !== -1) {
+                                            // If the product exists, update its quantity
+                                            existingProducts[existingProductIndex].quantity += 1;
+                                        } else {
+                                            // If the product doesn't exist, add it with quantity 1
+                                            const newProduct = { ...data1, quantity: 1 };
+                                            existingProducts.push(newProduct);
+                                        }
+
+                                        // Step 3: Update stored value in localStorage
+                                        localStorage.setItem("d1", JSON.stringify(existingProducts));
+                                        setdata133(existingProducts);
+                                        router.push("/cart");
                                     }}
                                 >
                                     <svg
@@ -1017,7 +1054,7 @@ function Productdetails() {
                         <div className="cart__breakup__inner">
                             <div className="cart__total">
                                 <span className="">Cart Total:</span>
-                                <span className="cartTotalAmount">₹335.00</span>
+                                <span className="cartTotalAmount">₹{totalMrp}.00</span>
                             </div>
                             <div
                                 className="shipping__total"
@@ -1028,13 +1065,13 @@ function Productdetails() {
                             </div>
                             <div className="mc_pay__total">
                                 <span className="">To Pay:</span>
-                                <span className="cartTotalAmount">₹335.00</span>
+                                <span className="cartTotalAmount">₹{totalMrp}.00</span>
                             </div>
                         </div>
                     </div>
                     <div className="cart__checkout">
                         <div className="cart__final__payment">
-                            <h2 className="cart__final__price cartTotalAmount">₹335.00</h2>
+                            <h2 className="cart__final__price cartTotalAmount">₹{totalMrp}.00</h2>
                             <p className="cart__tax__text">Inclusive of all taxes</p>
                         </div>
                         <a
