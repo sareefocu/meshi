@@ -695,6 +695,20 @@ const Payments = () => {
                                                                 >
                                                                     <div className="plans">
                                                                         <div
+                                                                            className={`form-check available-method ${activeTab == 2 && 'active'}`}
+                                                                            pay-type="phonepe" onClick={() => handleTabClick(2)}
+
+                                                                        >
+                                                                            <label className="form-check-label">
+                                                                                <img
+                                                                                    src="https://cdn141.picsart.com/363807473021211.png"
+                                                                                    className="pay-logo"
+                                                                                    alt="button"
+                                                                                />
+                                                                                <span className="unaviablee">G Pay</span>
+                                                                            </label>
+                                                                        </div>
+                                                                        <div
                                                                             className={`form-check available-method ${activeTab == 3 && 'active'}`}
                                                                             pay-type="phonepe" onClick={() => handleTabClick(3)}
 
