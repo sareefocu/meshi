@@ -90,7 +90,7 @@ const Payments = () => {
     const [data, setdata] = useState({})
     const router = useRouter();
 
-    const [activeTab, setActiveTab] = useState(2);
+    const [activeTab, setActiveTab] = useState(3);
     const handleTabClick = (tabNumber) => {
         setActiveTab(tabNumber);
     };
@@ -694,7 +694,7 @@ const Payments = () => {
                                                                     style={{ display: "block" }}
                                                                 >
                                                                     <div className="plans">
-                                                                        <div
+                                                                        {/* <div
                                                                             className={`form-check available-method ${activeTab == 2 && 'active'}`}
                                                                             pay-type="phonepe" onClick={() => handleTabClick(2)}
 
@@ -707,7 +707,7 @@ const Payments = () => {
                                                                                 />
                                                                                 <span className="unaviablee">G Pay</span>
                                                                             </label>
-                                                                        </div>
+                                                                        </div> */}
                                                                         <div
                                                                             className={`form-check available-method ${activeTab == 3 && 'active'}`}
                                                                             pay-type="phonepe" onClick={() => handleTabClick(3)}
