@@ -731,7 +731,7 @@ const Payments = () => {
                                                                         >
                                                                             <label className="form-check-label">
                                                                                 <img
-                                                                                    src="https://kurti.valentine-deal.shop/assets/website/images/paytm_icon.svg"
+                                                                                    src="https://upload.wikimedia.org/wikipedia/commons/2/24/Paytm_Logo_%28standalone%29.svg"
                                                                                     className="pay-logo"
                                                                                     alt="button"
                                                                                 />
@@ -746,7 +746,7 @@ const Payments = () => {
                                                                         >
                                                                             <label className="form-check-label">
                                                                                 <img
-                                                                                    src="https://kurti.valentine-deal.shop/assets/website/images/bhim_upi.svg"
+                                                                                    src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnMDjlc4aJzqc4vfL9BFw9hxrZk0nRyBAHwc95tUX_rlJMvwdHwHUU4FwuqQ&s"
                                                                                     className="pay-logo"
                                                                                     alt="button"
                                                                                 />
@@ -759,7 +759,7 @@ const Payments = () => {
                                                                         >
                                                                             <label className="form-check-label">
                                                                                 <img
-                                                                                    src="https://kurti.valentine-deal.shop/assets/website/images/whatspp_pay.svg"
+                                                                                    src="https://static.xx.fbcdn.net/assets/?revision=1431132240730458&name=Illustrations-Get-Started&density=1"
                                                                                     className="pay-logo"
                                                                                     alt="button"
                                                                                 />
